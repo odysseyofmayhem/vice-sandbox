@@ -1,0 +1,82 @@
+picker-test.html
+<style type="text/css">
+      #content {
+        margin-left: 20px;
+      }
+
+      #profile-img {
+        position: absolute;
+      }
+
+      #cropper-overlay {
+        top: 0;
+        left: 0;
+        width: 600px;
+        height: 400px;
+        cursor: move;
+        z-index: 6001;
+      }
+
+      .loading-indicator {
+        background-image: url('images/loading.gif');
+        background-repeat:no-repeat;
+        background-position:center;
+        position: absolute;
+        top:0;left:0;right:0;bottom:0;
+      }
+
+      .viewport {
+        overflow: hidden;
+        position: relative;
+        width: 289px;
+        height: 180px;
+        border:1px solid #ccc;
+        background-image: url('images/viewport_background.gif');
+      }
+
+      .viewport:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 5999;
+        -moz-opacity: .75;
+        opacity: .75;
+        filter: alpha(opacity=7);
+        -webkit-box-shadow: inset 0 0 0 40px white,inset 0 0 0 41px rgba(0,0,0,.1),inset 0 0 20px 41px rgba(0,0,0,.2);
+        -moz-box-shadow: inset 0 0 0 40px white,inset 0 0 0 41px rgba(0,0,0,.1),inset 0 0 20px 41px rgba(0,0,0,.2);
+        box-shadow: inset 0 0 0 40px white,inset 0 0 0 41px rgba(0,0,0,.1),inset 0 0 20px 41px rgba(0,0,0,.2);
+      }
+
+    </style>
+
+
+
+<br>
+Working: {{working}}
+
+<hr>
+<div filepicker path="/minion-id-test/" callback="doneUploading(file)" multiple=false>Add Photo</div>
+<hr>
+
+<div ng-show="uploadedFile">
+	{{uploadedFile}}<hr>
+	{{imageUrl}}<hr>
+
+
+	<div class="container">
+        <div class="viewport">
+          <div class="loading-indicator"></div>
+          <img id="profile-img"></img>
+          <div id="cropper-overlay"></div>
+        </div>
+      </div>
+      <div class="zoom-slider">
+        <div class="ui-slider-handle"></div>
+      </div>
+<hr>
+	
+</div>
+

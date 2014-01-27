@@ -1,8 +1,20 @@
-app.directive('cropsyArea', function (){
-   return function(scope, elem) {
-      elem.cropsy({
-			  max_scale: 2,
-			  mask_padding: 40
-			});
-   }
+app.directive('cropsyArea', [ '$rootScope', function ($rootScope) {
+    return {
+       restrict: 'A',
+       replace: true,
+       transclude: true,
+       controller: 'CropsyCtrl',
+       templateUrl: 'views/cropsy.tpl.html',
+       link: function ($scope, $element, attrs) {
+
+       }
+    };
+  }]);
+
+
+app.controller('CropsyCtrl', function ($scope) {
+    
+
+   
 });
+

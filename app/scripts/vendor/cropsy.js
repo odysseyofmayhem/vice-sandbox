@@ -7,7 +7,7 @@ $.fn.cropsy = function(options) {
             $.extend( settings, options );
           }
 
-          var $image = $(this),
+          var $image = $('#profile-img'),
               $loading = $('.loading-indicator'),
               $viewport = $image.parent(),
               $container = $viewport.parent()
@@ -20,7 +20,7 @@ $.fn.cropsy = function(options) {
           $image.hide();
 
           // attach on image load
-          $image.load(function() {
+          $image.bind('load', function() {
 
             centerImage();
 
@@ -47,6 +47,7 @@ $.fn.cropsy = function(options) {
               }
             });
 
+            /*
             var $zoom_widget = $('.zoom-slider')
               .width($viewport.width())
               .slider({
@@ -72,12 +73,12 @@ $.fn.cropsy = function(options) {
                         left: Math.round(centerX - newWidth / 2)
                       });
                 }
-              });
+              });*/
 
             // remove loader and show image
             $loading.hide();
             $loading.remove();
-            $image.fadeIn();
+            $image.show();
           });
 
           var centerImage = function() {

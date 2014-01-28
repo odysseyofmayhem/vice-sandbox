@@ -14,6 +14,7 @@
     height: 280px;
     border:1px solid #ccc;
     background-image: url('images/viewport_background.gif');
+    cursor: move;
   }
 
   .cropContainer .viewport:after{
@@ -40,14 +41,6 @@
     top:0;left:0;right:0;bottom:0;
   }
 
-  .cropContainer .overlay{
-  	top: 0;
-    left: 0;
-    width: 600px;
-    height: 400px;
-    cursor: move;
-    z-index: 6001;
-  }
   .cropContainer .profile-img{
   	position: absolute;
   }
@@ -64,6 +57,13 @@
 
 </style>
 
+<div filepicker path="/minion-id-test/" callback="doneUploading(file)" multiple=false>Add Photo</div>
+
 <div id="content">
-	<div minion-crop img-src="https://www.filepicker.io/api/file/V7QaMG7QYCUkz5GJ0JOr" on-change=""></div>
+	<div minion-crop img-src="{{imageUrl}}" crop-action="doCrop(image, params)" mask-size="40"></div>
+</div>
+{{croppedImage}}
+<div ng-show="croppedImage">
+	<h2>Cropped Image:</h2>
+	<img ng-src="{{croppedImage}}">
 </div>
